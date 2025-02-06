@@ -16,6 +16,12 @@ export default function ColorGuessGame() {
 
     setTargetColor(correctColor)
     setColorOptions(selectedColor.sort(() => 0.5 - Math.random()))
+    // setScore(0)
+    setGameStatus("")
+    setGameOver(false)
+  }
+
+  const startGame = () => {
     setScore(0)
     setGameStatus("")
     setGameOver(false)
@@ -29,12 +35,13 @@ export default function ColorGuessGame() {
     if (gameOver) return
 
     if (guessedColor === targetColor) {
-      setScore(prevScore => prevScore + 1)
+      setScore(prevScore => prevScore + 5)
       setGameStatus("correct")
       setGameOver(true)
     } else {
       setGameStatus("wrong")
       setGameOver(true)
+      setScore(prevScore => prevScore - 5)
     }
   }
 
@@ -86,14 +93,22 @@ export default function ColorGuessGame() {
             Score: {score}
           </div>
         </div>
-        
+        <div className="button">
         <button
           className="new-game"
           data-testid="newGameButton"
           onClick={setUpGame}
         >
+          Start game
+        </button>
+        <button
+        className="new-game"
+        data-testid="startGameButton"
+        onClick={startGame}
+        >
           New game
         </button>
+        </div>
       </div>
     </div>
   )

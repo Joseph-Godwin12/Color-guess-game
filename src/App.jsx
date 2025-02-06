@@ -1,12 +1,8 @@
 import './App.css'
 import ColorGuessGame from './ColorGuessGame'
 
-function App() {
- 
-
+export default function App() {
   return (
     <ColorGuessGame />
   )
 }
-
-export default App
